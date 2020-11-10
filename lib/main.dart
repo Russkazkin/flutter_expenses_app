@@ -21,12 +21,19 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Card(
-              child: Text('CHART!'),
+            Container(
+              child: Card(
+                child: Text('CHART!'),
+                color: Colors.lightBlue,
+              ),
+              width: double.infinity,
             ),
             Card(
               child: Text('LIST OF TX'),
+              color: Colors.lime,
             )
           ],
         ),

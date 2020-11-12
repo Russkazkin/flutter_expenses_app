@@ -56,10 +56,9 @@ class MyHomePage extends StatelessWidget {
                               child: Text(
                                 tx.amount.toString(),
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                  color: Colors.purple
-                                ),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.purple),
                               ),
                               margin: EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 15),
@@ -72,9 +71,21 @@ class MyHomePage extends StatelessWidget {
                             ),
                             Column(
                               children: [
-                                Text(tx.title),
-                                Text(tx.date.toString()),
+                                Text(
+                                  tx.title,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  tx.date.toString(),
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                  ),
+                                ),
                               ],
+                              crossAxisAlignment: CrossAxisAlignment.start,
                             ),
                           ],
                         ),

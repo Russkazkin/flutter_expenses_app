@@ -23,23 +23,19 @@ class TransactionList extends StatelessWidget {
                       fontSize: 20,
                       color: Colors.purple),
                 ),
-                margin:
-                EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.purple,
-                      width: 2,
-                    )),
+                  color: Colors.purple,
+                  width: 2,
+                )),
               ),
               Column(
                 children: [
                   Text(
                     userTransactions[index].title,
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                   Text(
                     DateFormat.yMMMd().format(userTransactions[index].date),

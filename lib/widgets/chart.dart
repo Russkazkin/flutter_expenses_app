@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
 import '../models/transaction.dart';
 
 class Chart extends StatelessWidget {
@@ -7,12 +9,26 @@ class Chart extends StatelessWidget {
   Chart(this.resentTransactions);
 
   List<Map<String, Object>> get groupedTransactionValues {
-    return List.generate(
-        7,
-        (index) => {
-              'day': 'T',
-              'amount': 9.99,
-            });
+    return List.generate(7, (index) {
+      final weekDay = DateTime.now().subtract(Duration(days: index));
+      var totalSum = 0.0;
+
+      for (var i = 0; i < resentTransactions.length; i++) {
+        if (resentTransactions[i].date.day == weekDay.day &&
+            resentTransactions[i].date.month == weekDay.month &&
+            resentTransactions[i].date.year == weekDay.year) {
+          totalSum += resentTransactions[i].amount;
+        }
+      }
+
+      print(DateFormat.E(weekDay));
+      print(totalSum);
+
+      return {
+        'day': DateFormat.E(weekDay),
+        'amount': totalSum,
+      };
+    });
   }
 
   @override

@@ -30,43 +30,22 @@ class TransactionList extends StatelessWidget {
               ],
             )
           : ListView.builder(
-              itemBuilder: (ctx, index) => Card(
-                child: Row(
-                  children: [
-                    Container(
-                      child: Text(
-                        '\$${userTransactions[index].amount.toStringAsFixed(2)}',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.purple),
-                      ),
-                      margin:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: Colors.purple,
-                        width: 2,
-                      )),
+              itemBuilder: (ctx, index) => ListTile(
+                leading: CircleAvatar(
+                  radius: 30,
+                  child: FittedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Text('\$${userTransactions[index].amount}'),
                     ),
-                    Column(
-                      children: [
-                        Text(
-                          userTransactions[index].title,
-                          style: Theme.of(context).textTheme.headline6,
-                        ),
-                        Text(
-                          DateFormat.yMMMd()
-                              .format(userTransactions[index].date),
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
-                  ],
+                  ),
+                ),
+                title: Text(
+                  userTransactions[index].title,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                subtitle: Text(
+                  DateFormat.yMMMd().format(userTransactions[index].date),
                 ),
               ),
               itemCount: userTransactions.length,

@@ -16,20 +16,27 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
         fontFamily: 'Quicksand',
-        textTheme: ThemeData.light().textTheme.copyWith(
+        textTheme: ThemeData
+            .light()
+            .textTheme
+            .copyWith(
+            headline6: TextStyle(
+              fontFamily: 'OpenSuns',
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
+            button: TextStyle(color: Colors.white),
+        ),
+        appBarTheme: AppBarTheme(
+            textTheme: ThemeData
+                .light()
+                .textTheme
+                .copyWith(
               headline6: TextStyle(
                 fontFamily: 'OpenSuns',
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
+                fontSize: 20,
               ),
-            ),
-        appBarTheme: AppBarTheme(
-            textTheme: ThemeData.light().textTheme.copyWith(
-                  headline6: TextStyle(
-                    fontFamily: 'OpenSuns',
-                    fontSize: 20,
-                  ),
-                )),
+            )),
       ),
       home: MyHomePage(),
     );

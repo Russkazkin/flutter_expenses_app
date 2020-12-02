@@ -13,7 +13,7 @@ class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  void submitData() {
+  void _submitData() {
     final enteredTitle = titleController.text;
     final enteredAmount = double.parse(amountController.text);
 
@@ -24,6 +24,10 @@ class _NewTransactionState extends State<NewTransaction> {
     widget.addTx(enteredTitle, enteredAmount);
 
     Navigator.of(context).pop();
+  }
+
+  void _presentDatePicker() {
+    showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2020), lastDate: DateTime.now());
   }
 
   @override
@@ -37,13 +41,13 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
               controller: titleController,
-              onSubmitted: (_) => submitData(),
+              onSubmitted: (_) => _submitData(),
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
               keyboardType: TextInputType.numberWithOptions(decimal: true),
-              onSubmitted: (_) => submitData(),
+              onSubmitted: (_) => _submitData(),
             ),
             Container(
               height: 70,
@@ -51,7 +55,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 children: [
                   Text('No Date Chosen!'),
                   FlatButton(
-                    onPressed: () {},
+                    onPressed: _presentDatePicker,
                     child: Text('Choose Date', style: TextStyle(fontWeight: FontWeight.bold),),
                     textColor: Theme.of(context).primaryColor,
                   ),
@@ -59,7 +63,7 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
             ),
             RaisedButton(
-              onPressed: submitData,
+              onPressed: _submitData,
               child: Text('Add Transaction'),
               color: Theme.of(context).primaryColor,
               textColor: Theme.of(context).textTheme.button.color,

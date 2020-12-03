@@ -50,6 +50,13 @@ class TransactionList extends StatelessWidget {
                   subtitle: Text(
                     DateFormat.yMMMd().format(userTransactions[index].date),
                   ),
+                  trailing: IconButton(
+                    icon: Icon(
+                      Icons.delete_outline,
+                      color: Theme.of(context).errorColor,
+                    ),
+                    onPressed: () {},
+                  ),
                 ),
               ),
               itemCount: userTransactions.length,

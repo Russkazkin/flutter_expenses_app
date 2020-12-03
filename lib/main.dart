@@ -16,27 +16,21 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
         fontFamily: 'Quicksand',
-        textTheme: ThemeData
-            .light()
-            .textTheme
-            .copyWith(
-            headline6: TextStyle(
-              fontFamily: 'OpenSuns',
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
-            button: TextStyle(color: Colors.white),
-        ),
-        appBarTheme: AppBarTheme(
-            textTheme: ThemeData
-                .light()
-                .textTheme
-                .copyWith(
+        textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(
                 fontFamily: 'OpenSuns',
-                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
               ),
-            )),
+              button: TextStyle(color: Colors.white),
+            ),
+        appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                  headline6: TextStyle(
+                    fontFamily: 'OpenSuns',
+                    fontSize: 20,
+                  ),
+                )),
       ),
       home: MyHomePage(),
     );
@@ -58,12 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
         .toList();
   }
 
-  void _addNewTransaction(String title, double amount) {
+  void _addNewTransaction(String title, double amount, DateTime chosenDate) {
     final newTx = Transaction(
-        id: DateTime.now().toString(),
-        title: title,
-        amount: amount,
-        date: DateTime.now());
+      id: DateTime.now().toString(),
+      title: title,
+      amount: amount,
+      date: chosenDate,
+    );
     setState(() {
       _userTransactions.add(newTx);
     });

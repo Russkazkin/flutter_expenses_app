@@ -7,11 +7,11 @@ import 'widgets/new_transaction.dart';
 import 'models/transaction.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  /*WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
-  ]);
+  ]);*/
   runApp(MyApp());
 }
 
@@ -123,13 +123,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            Container(
+            _showChart ? Container(
               height: (MediaQuery.of(context).size.height -
                       appBar.preferredSize.height -
                       MediaQuery.of(context).padding.top) *
-                  .25,
+                  .75,
               child: Chart(_recentTransactions),
-            ),
+            ) :
             Container(
               height: (MediaQuery.of(context).size.height -
                       appBar.preferredSize.height -

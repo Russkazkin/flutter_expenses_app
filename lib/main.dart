@@ -130,7 +130,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             ),
-            _showChart ? Container(
+            if(!isLandscape) Container(
+              height: (MediaQuery.of(context).size.height -
+                  appBar.preferredSize.height -
+                  MediaQuery.of(context).padding.top) *
+                  .25,
+              child: Chart(_recentTransactions),
+            ),
+            if(!isLandscape) txListWidget,
+            if(isLandscape) _showChart ? Container(
               height: (MediaQuery.of(context).size.height -
                       appBar.preferredSize.height -
                       MediaQuery.of(context).padding.top) *

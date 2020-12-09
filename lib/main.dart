@@ -102,7 +102,13 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: () => _startAddNewTransaction(context))
       ],
     );
-
+    final txListWidget = Container(
+      height: (MediaQuery.of(context).size.height -
+          appBar.preferredSize.height -
+          MediaQuery.of(context).padding.top) *
+          .75,
+      child: TransactionList(_userTransactions, _deleteTransaction),
+    );
     return Scaffold(
       appBar: appBar,
       body: SingleChildScrollView(
@@ -110,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
+            if (isLandscape) Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text('Show Chart'),
@@ -131,13 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   .75,
               child: Chart(_recentTransactions),
             ) :
-            Container(
-              height: (MediaQuery.of(context).size.height -
-                      appBar.preferredSize.height -
-                      MediaQuery.of(context).padding.top) *
-                  .75,
-              child: TransactionList(_userTransactions, _deleteTransaction),
-            )
+            txListWidget
           ],
         ),
       ),

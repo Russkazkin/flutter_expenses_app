@@ -19,7 +19,7 @@ class TransactionList extends StatelessWidget {
                     'No transactions added yet!',
                     style: Theme.of(context).textTheme.headline6,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
@@ -57,9 +57,9 @@ class TransactionList extends StatelessWidget {
                     ? FlatButton.icon(
                         onPressed: () =>
                             deleteTransaction(userTransactions[index].id),
-                        label: Text('Delete'),
+                        label: const Text('Delete'),
                         textColor: Theme.of(context).errorColor,
-                        icon: Icon(Icons.delete_outline),
+                        icon: const Icon(Icons.delete_outline),
                       )
                     : IconButton(
                         icon: Icon(
